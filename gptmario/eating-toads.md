@@ -30,8 +30,8 @@
 
 ​	"What if we call them Toad-a-Lings?"
 
-​	 "They'd still be toads."
+​ "They'd still be toads."
 
- 	"How about Toad-e-Lings?" 
+​	"How about Toad-e-Lings?" 
 
 ​	"Just shut up, Mario."
