@@ -54,7 +54,7 @@
         
         // create random offsets for lat and long
         var len_off = 40
-        var range = 0.02
+        var range = 0.03
         var xoffset = Array.from({length: len_off}, () => (Math.random()*range));
         var yoffset = Array.from({length: len_off}, () => (Math.random()*range));
 
@@ -84,7 +84,8 @@
             finalcoords = get_point(latitudes, longitudes, 4, position);
             console.log(finalcoords);
             console.log(latitudes[0], longitudes[0]);
-            selection = Math.floor(Math.random()*len_off);
+            selection = Math.floor(Math.random()*finalcoords[0].length);
+            console.log(selection);
             window.open(`https://www.google.com/maps/search/${finalcoords[0][selection]},${finalcoords[1][selection]}`);
         }
 
