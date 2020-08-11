@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+</html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="Randonautica, AI, QRNG, Paranormal">
+    <meta name="author" content="poopy stinky">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 20%;
+            background-image: url("background.gif");
+            background-position: top left; 
+            background-size: 110%;
+            
+        }
+        .butt {
+            box-shadow:inset 0px 1px 0px 0px #fbafe3;
+            background:linear-gradient(to bottom, #ff5bb0 5%, #ef027d 100%);
+            background-color:#ff5bb0;
+            border-radius:6px;
+            border:1px solid #ee1eb5;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #c70067;
+        }
+        .butt:hover {
+            background:linear-gradient(to bottom, #ef027d 5%, #ff5bb0 100%);
+            background-color:#ef027d;
+        }
+        .butt:active {
+            position:relative;
+            top:1px;
+        }
+
+
+        
+    </style>
+    <script>
+
+        // make arrays for the latitudes and longitudes of the random points and put them in "coordinates"
+        var latitudes = [];
+        var longitudes = [];
+        var coordinates = [];
+        
+        // create random offsets for lat and long
+        var len_off = 40
+        var range = 0.02
+        var xoffset = Array.from({length: len_off}, () => (Math.random()*range));
+        var yoffset = Array.from({length: len_off}, () => (Math.random()*range));
+
+
+        // retrieve latitude and longitude 
+        function getLocation(rang) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function showPosition(position) {
+            // x.innerHTML = "Your location <br> Latitude: " + position.coords.latitude + 
+            // "<br>Longitude: " + position.coords.longitude;
+        
+            for(var i = 0; i < xoffset.length; i++) {
+                latitudes.push(position.coords.latitude + xoffset[i]);
+            }
+            for(var i = 0; i < yoffset.length; i++) {
+                longitudes.push(position.coords.longitude + yoffset[i]);
+            }
+            for(var i = 0; i < longitudes.length; i++) {
+                coordinates.push([latitudes[i], longitudes[i]]);
+            }
+
+            finalcoords = get_point(latitudes, longitudes, 4, position);
+            console.log(finalcoords);
+            console.log(latitudes[0], longitudes[0]);
+            window.open(`https://www.google.com/maps/search/${finalcoords[0][0]},${finalcoords[1][0]}`);
+        }
+
+        function get_point(lat, long, num_attractors, position) {
+            xoffset = Array.from({length: len_off}, () => (Math.random()*range));
+            yoffset = Array.from({length: len_off}, () => (Math.random()*range));
+            // return(lat[0], long[0]);
+            // return([(kmeans(lat, num_attractors)), (kmeans(long, num_attractors))]);
+            kmeans_lat = kmeans(xoffset, num_attractors);
+            kmeans_long = kmeans(yoffset, num_attractors);
+
+            for(var i = 0; i < kmeans_lat.length; i++) {
+                // kmeans_lat[i] = (kmeans_lat[i]+position.coords.latitude*52)/53
+                kmeans_lat[i] = (kmeans_lat[i]-range/2) + position.coords.latitude;
+            }
+            for(var i = 0; i < kmeans_long.length; i++) {
+                // kmeans_long[i] = (kmeans_long[i]+position.coords.longitude*52)/53;
+                kmeans_long[i] = (kmeans_long[i]-range/2) + position.coords.longitude;
+            }
+            return([kmeans_lat, kmeans_long]);
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <p id="demo"></p>
+        <a href="#" class="butt" onclick="getLocation();">gimme da gps</a>
+    </center>
+    <script>
+        var x = document.getElementById("demo");
+        // array to process, clusters
+        function kmeans(n,t){var r=new Array,e=new Array,o=new Array,a=!1;for(n.sort(function(i,n){return i-n}),initGroups=0;initGroups<t;initGroups++)r[initGroups]=new Array;for(initialCentroids=Math.round(n.length/(t+1)),i=0;i<t;i++)e[i]=n[initialCentroids*(i+1)];do{for(j=0;j<t;j++)r[j]=[];for(a=!1,i=0;i<n.length;i++){for(Distance=-1,oldDistance=-1,j=0;j<t;j++)distance=Math.abs(e[j]-n[i]),-1==oldDistance?(oldDistance=distance,newGroup=j):distance<=oldDistance&&(newGroup=j,oldDistance=distance);r[newGroup].push(n[i])}for(o=e,j=0;j<t;j++){for(total=0,newCentroid=0,i=0;i<r[j].length;i++)total+=r[j][i];newCentroid=total/r[newGroup].length,e[j]=newCentroid}for(j=0;j<t;j++)e[j]!=o[j]&&(a=!0)}while(1==a);return e}
+    </script>
+</body>
+</html>
