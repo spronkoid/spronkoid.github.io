@@ -91,8 +91,8 @@
         }
 
         function get_point(lat, long, num_attractors, position) {
-            xoffset = Array.from({length: len_off}, () => (Math.random()*range));
-            yoffset = Array.from({length: len_off}, () => (Math.random()*range));
+            xoffset = Array.from({length: len_off}, () => (Math.random()*range)-range/2);
+            yoffset = Array.from({length: len_off}, () => (Math.random()*range)-range/2);
             // return(lat[0], long[0]);
             // return([(kmeans(lat, num_attractors)), (kmeans(long, num_attractors))]);
             kmeans_lat = kmeans(xoffset, num_attractors);
@@ -100,11 +100,11 @@
 
             for(var i = 0; i < kmeans_lat.length; i++) {
                 // kmeans_lat[i] = (kmeans_lat[i]+position.coords.latitude*52)/53
-                kmeans_lat[i] = (kmeans_lat[i]-range/2) + position.coords.latitude;
+                kmeans_lat[i] = position.coords.latitude - kmeans_lat[i];
             }
             for(var i = 0; i < kmeans_long.length; i++) {
                 // kmeans_long[i] = (kmeans_long[i]+position.coords.longitude*52)/53;
-                kmeans_long[i] = (kmeans_long[i]-range/2) + position.coords.longitude;
+                kmeans_long[i] = position.coords.longitude - kmeans_long[i];
             }
             return([kmeans_lat, kmeans_long]);
         }
