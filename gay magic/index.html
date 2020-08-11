@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 </html>
 <head>
-    <title>gay magic</title>
+    <title>Gay Magic Locator™</title>
     <meta charset="UTF-8">
-    <meta name="description" content="">
+    <meta name="description" content="One click and you're on your way, to the quantum attractors (but haha they're gay)">
     <meta name="keywords" content="Randonautica, AI, QRNG, Paranormal, Gay, Witchcraft">
     <meta name="author" content="poopy stinky">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,11 +108,22 @@
             }
             return([kmeans_lat, kmeans_long]);
         }
+
+        function blindspot() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(fartymcgee);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function fartymcgee(position) {
+            window.open(`https://www.google.com/maps/search/${position.coords.latitude+(Math.random()*range)-range/2},${position.coords.longitude+(Math.random()*range)-range/2}`);
+        }
     </script>
 </head>
 <body>
     <center>
-        <h3>Gay Magic Attractor Locator 1.0™</h3>
+        <h3>Gay Magic Locator 1.0™</h3>
         <hr>
         <p id="demo"></p>
         <p>visualize what you would like to see and click the button <br>
@@ -124,7 +135,8 @@
         </ul>
         <center>
     </p><br>
-        <a href="#" class="butt" onclick="getLocation();">gimme da gps</a>
+        <a href="#" class="butt" onclick="getLocation();">gimme da gps (attractor)</a><br><br>
+        <a href="#" class="butt" onclick="blindspot();">gimme da gps (blind spot)</a>
     </center>
     <script>
         var x = document.getElementById("demo");
