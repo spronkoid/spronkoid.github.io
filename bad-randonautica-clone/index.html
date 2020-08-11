@@ -82,7 +82,8 @@
             finalcoords = get_point(latitudes, longitudes, 4, position);
             console.log(finalcoords);
             console.log(latitudes[0], longitudes[0]);
-            window.open(`https://www.google.com/maps/search/${finalcoords[0][0]},${finalcoords[1][0]}`);
+            selection = Math.floor(Math.random()*len_off);
+            window.open(`https://www.google.com/maps/search/${finalcoords[0][selection]},${finalcoords[1][selection]}`);
         }
 
         function get_point(lat, long, num_attractors, position) {
