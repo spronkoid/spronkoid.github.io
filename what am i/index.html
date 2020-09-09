@@ -78,7 +78,13 @@
 
         function getitem() {
             thething = Math.floor(Math.random() * items.length) + 1;
-            document.getElementById('demo').innerHTML = items[thething];
+            // filter out the no-no topics because aaaa
+            if(items[thething].includes('rape') || items[thething].includes('sex') || items[thething].includes('murder')) {
+                document.getElementById('demo').innerHTML = items[thething+20];
+            }
+            else {
+                document.getElementById('demo').innerHTML = items[thething];
+            }
         }
     </script>
 </body>
