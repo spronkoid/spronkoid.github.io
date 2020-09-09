@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+</html>
+<head>
+    <title>I am™</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="What am I?">
+    <meta name="keywords" content="Ai, Random, Generator, Noun">
+    <meta name="author" content="Spruce Reams">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/8bit-wonder" type="text/css"/>
+    <link rel="icon" href="favicon.ico">
+    <style>
+        body {
+            margin: 20%;
+            background-image: url("background.gif");
+            background-position: top left; 
+            background-size: 110%;
+            font-family: '8BITWONDERNominal';
+            font-weight: normal;
+            font-style: normal;            
+        }
+        .butt {
+            box-shadow:inset 0px 1px 0px 0px #fbafe3;
+            background:linear-gradient(to bottom, #ff5bb0 5%, #ef027d 100%);
+            background-color:#ff5bb0;
+            border-radius:6px;
+            border:1px solid #ee1eb5;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #c70067;
+        }
+        .butt:hover {
+            background:linear-gradient(to bottom, #ef027d 5%, #ff5bb0 100%);
+            background-color:#ef027d;
+        }
+        .butt:active {
+            position:relative;
+            top:1px;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <center>
+        <h3>What am I?</h3>
+        <hr>
+        <p id="demo"></p>
+        <p><br>
+        </center>
+        <center>
+    </p><br>
+        <a href="#" class="butt" onclick="getitem();">button</a><br><br>
+    </center>
+    <script src='things/things1.txt'></script>
+    <script src='things/things2.txt'></script>
+    <script src='things/things3.txt'></script>
+    <script>
+        items = []
+        one = things1.split('\n');
+        two = things2.split('\n');
+        three = things3.split('\n')
+        for(i =0; i < one.length; i++){
+            items.push(one[i]);
+        }
+        for(i = 0; i < two.length; i++){
+            items.push(two[i]);
+        }
+        for(i = 0; i < three.length; i++){
+            items.push(three[i]);
+        }
+
+        function getitem() {
+            thething = Math.floor(Math.random() * items.length) + 1;
+            document.getElementById('demo').innerHTML = items[thething];
+        }
+    </script>
+</body>
+</html>
