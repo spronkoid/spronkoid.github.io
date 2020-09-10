@@ -1,3 +1,7 @@
+<!--
+    One: This code is BAD I made it as quickly as possible
+    Two: hey :3 how r u
+-->
 <!DOCTYPE html>
 </html>
 <head>
@@ -62,6 +66,7 @@
     <script src='things/things2.txt'></script>
     <script src='things/things3.txt'></script>
     <script src='things/things4.txt'></script>
+    <script src='things/things5.txt'></script>
     <script>
         items = []
         one = things1.split('\n');
@@ -83,13 +88,11 @@
 
         function getitem() {
             thething = Math.floor(Math.random() * items.length) + 1;
-            // filter out the no-no topics because aaaa
-            if(items[thething].includes('rape') || items[thething].includes('sex') || items[thething].includes('murder')) {
-                document.getElementById('demo').innerHTML = items[thething+20];
+            // filter out the no-no topics and words because aaaa
+            while(items[thething].includes('rape') || items[thething].includes('nigga') ||items[thething].includes('nigger') || items[thething].includes('dike') || items[thething].includes('dyke') ||  items[thething].includes('sex') || items[thething].includes('murder') || items[thething].includes('death')) {
+                thething+=1
             }
-            else {
-                document.getElementById('demo').innerHTML = items[thething];
-            }
+            document.getElementById('demo').innerHTML = items[thething];
         }
     </script>
 </body>
