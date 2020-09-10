@@ -61,11 +61,13 @@
     <script src='things/things1.txt'></script>
     <script src='things/things2.txt'></script>
     <script src='things/things3.txt'></script>
+    <script src='things/things4.txt'></script>
     <script>
         items = []
         one = things1.split('\n');
         two = things2.split('\n');
-        three = things3.split('\n')
+        three = things3.split('\n');
+        four = things4.split('\n');
         for(i =0; i < one.length; i++){
             items.push(one[i]);
         }
@@ -74,6 +76,9 @@
         }
         for(i = 0; i < three.length; i++){
             items.push(three[i]);
+        }
+        for(i = 0; i < four.length; i++){
+            items.push(four[i]);
         }
 
         function getitem() {
