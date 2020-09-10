@@ -89,7 +89,7 @@
         function getitem() {
             thething = Math.floor(Math.random() * items.length) + 1;
             // filter out the no-no topics and words because aaaa
-            while(items[thething].includes('rape') || items[thething].includes('kill') || items[thething].includes('nigga') ||items[thething].includes('nigger') || items[thething].includes('dike') || items[thething].includes('dyke') ||  items[thething].includes('sex') || items[thething].includes('murder') || items[thething].includes('death')) {
+            while(items[thething].includes('suicide')  || items[thething].includes('rape') || items[thething].includes('kill') || items[thething].includes('nigga') ||items[thething].includes('nigger') || items[thething].includes('dike') || items[thething].includes('dyke') ||  items[thething].includes('sex') || items[thething].includes('murder') || items[thething].includes('death')) {
                 thething+=1
             }
             document.getElementById('demo').innerHTML = items[thething];
