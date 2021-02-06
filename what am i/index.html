@@ -74,6 +74,7 @@
         two = things2.split('\n');
         three = things3.split('\n');
         four = things4.split('\n');
+        five = new_things.split("\n");
         for(i =0; i < one.length; i++){
             items.push(one[i]);
         }
@@ -86,7 +87,9 @@
         for(i = 0; i < four.length; i++){
             items.push(four[i]);
         }
-
+        for(i = 0; i < five.length; i++) {
+            items.push(five[i]));
+        }
         function getitem() {
             thething = Math.floor(Math.random() * items.length) + 1;
             // filter out the no-no topics and words because aaaa
